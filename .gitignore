@@ -1,0 +1,10 @@
+# Claude Code — nur lokale/persönliche Dateien ignorieren.
+# .claude/settings.json, .claude/commands/, .claude/agents/, .claude/skills/
+# sind geteilte Projektkonfiguration und werden bewusst NICHT ignoriert.
+.claude/settings.local.json
+CLAUDE.local.md
+
+# Andere KI-Agenten: nur lokale/temporäre Session- und Konfigurationsdateien
+.cursor/
+.aider*
+.mcp.local.json

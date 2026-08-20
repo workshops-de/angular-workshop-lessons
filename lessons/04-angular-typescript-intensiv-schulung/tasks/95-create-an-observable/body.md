@@ -1,0 +1,5 @@
+- Open _book-api.service.ts_
+- Change return type of `getAll` to `Observable<Book[]>` instead of `Book[]`.
+- Make use of the creation operator `of`.
+- Use the Observable in `book.component.ts` and set books array in `subscribe`.
+- Make sure that the books are still rendered.

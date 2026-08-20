@@ -1,0 +1,2 @@
+- Have a look at what the BookMonkey API has returned
+- Feel free to extend the `BookCardComponent` to display a cover image or the number of pages or event its price. :-)

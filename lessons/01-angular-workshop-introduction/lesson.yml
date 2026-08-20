@@ -1,0 +1,9 @@
+name: Angular Workshop Introduction
+position: 1
+trainer: "robin.boehm@workshops.de"
+slides_type: google_slides
+google_slide_id: 1fCXthDv9hMFrTPhfDUAkKd3BgmNsiVe_eOwgSkhsU30
+pdf_generation_enabled: true
+stackblitz_enabled: true
+codesandbox_enabled: true
+deprecated: false

@@ -1,0 +1,1 @@
+- Redirect after book creation to the new created book

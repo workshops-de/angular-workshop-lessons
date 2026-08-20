@@ -1,0 +1,2 @@
+- Remove the `ActivatedRoute` in _BookDetailComponent_.
+- Define an `input()` signal for isbn and retrieve the book by using `getBookByIsbn` via _BookApiService_.

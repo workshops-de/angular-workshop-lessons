@@ -1,0 +1,11 @@
+name: Angular Forms
+position: 6
+trainer: "robin.boehm@workshops.de"
+slides_type: google_slides
+github_code_url: https://github.com/workshops-de/angular-workshop
+git_tag_starting: solve--use-router-with-component-input-bindings
+google_slide_id: 1Ue8_s_nz09Yc0RT2I38fmE5hlbF8oz_quzSRODPX_ZA
+pdf_generation_enabled: true
+stackblitz_enabled: true
+codesandbox_enabled: false
+deprecated: false
