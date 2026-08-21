@@ -1,6 +1,6 @@
 ## OnInit
 
-1. Refactor `BookComponent`: It should load data in `ngOnInit()`
+1. Refactor `BooksPage`: It should load data in `ngOnInit()`
 2. Import `OnInit` and add implements to your class.
 3. Implement `ngOnInit()`
 

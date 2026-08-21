@@ -1,6 +1,8 @@
+## Providing the book data
+
 ```ts
-// app.component.ts
-export class AppComponent {
+// app.ts
+export class App {
   book = {
     title: 'How to win friends',
     author: 'Dale Carnegie',
@@ -9,9 +11,12 @@ export class AppComponent {
 }
 ```
 
+## Reading an input signal in the template
+
+Input signals are functions — call them with `()` to read their value.
+
 ```html
-<!-- book-card.component.html -->
+<!-- book-card.html -->
 <h3>{{ content().title }}</h3>
 <!-- ... -->
 ```
-

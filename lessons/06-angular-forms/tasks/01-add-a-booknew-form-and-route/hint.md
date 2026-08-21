@@ -1,6 +1,10 @@
+## Generate the component
+
 ```sh
-ng generate component book/book-new
+ng generate component books/book-new/book-new-page
 ```
+
+## The template
 
 ```html
 <form [formGroup]="form" (ngSubmit)="submit()">
@@ -15,12 +19,13 @@ ng generate component book/book-new
 </form>
 ```
 
+## The component class
 
 ```typescript
 @Component({..})
-export class BookNewComponent {
-  private formBuilder = inject(FormBuilder);
-	
+export class BookNewPage {
+  private readonly formBuilder = inject(NonNullableFormBuilder);
+
   form: FormGroup = this.formBuilder.group({
      isbn: [''],
      author: [''],

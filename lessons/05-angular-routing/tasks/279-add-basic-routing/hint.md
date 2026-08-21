@@ -1,4 +1,5 @@
-** NavigationComponent **
+## Navigation
+
 ```html
 <ul>
   <li><a routerLink="/books">Books</a></li>
@@ -6,7 +7,8 @@
 </ul>
 ```
 
-**Book Routes:**
+## Routes
+
 ```ts
 // app.routes.ts
 export const routes: Routes = [
@@ -17,11 +19,11 @@ export const routes: Routes = [
   },
   {
     path: 'books',
-    component: BookComponent
+    component: BooksPage
   },
   {
     path: 'about',
-    component: AboutComponent
+    component: AboutPage
   }
 ];
 ```
@@ -37,19 +39,19 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-**Router outlet and router link:**
+## Router outlet and router link
 
 ```ts
-// app.component.ts
+// app.ts
 @Component({
   selector: 'app-root',
   // ...
   imports: [RouterOutlet],
   // ...
 })
-export class AppComponent {}
+export class App {}
 ```
 
 ```html
-<router-outlet></router-outlet>
+<router-outlet />
 ```

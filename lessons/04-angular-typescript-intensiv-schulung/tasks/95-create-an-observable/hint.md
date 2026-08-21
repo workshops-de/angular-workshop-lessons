@@ -1,14 +1,17 @@
-**imports**
+## Imports
+
 ```typescript
 import { Observable, of } from 'rxjs';
 ```
 
-**getAll()**
+## getAll()
+
 ```typescript
 return of(this.books);
 ```
 
-**Component**
+## Subscribing in BooksPage
+
 ```typescript
-...getAll().subscribe({ next: booksFromApi => /* assign to books */})
+this.booksClient.getAll().subscribe(booksFromService => this.books.set(booksFromService));
 ```

@@ -1,5 +1,6 @@
+## app.routes.ts
+
 ```ts
-// app.routes.ts
 export const routes: Routes = [
   {
     path: '',
@@ -8,35 +9,36 @@ export const routes: Routes = [
   },
   {
     path: 'books',
-    loadChildren: () => import('./book/book.routes').then(module => module.bookRoutes)
+    loadChildren: () => import('./books/book.routes').then(module => module.bookRoutes)
   },
   {
     path: 'about',
-    component: AboutComponent
+    component: AboutPage
   }
 ];
 ```
 
+## books/book.routes.ts
+
 ```ts
-// book.routes.ts
 export const bookRoutes: Routes = [
   {
     path: '',
-    component: BookComponent
+    component: BooksPage
   },
   {
     path: 'detail/:isbn',
-    component: BookDetailComponent
+    component: BookDetailPage
   }
 ];
 ```
 
-### Lazy load a single component
+## Lazy load a single component
 
 ```ts
 {
     path: 'detail/:isbn',
     loadComponent: () =>
-      import('./book-detail/book-detail.component').then(c => c.BookDetailComponent)
+      import('./book-detail/book-detail-page').then(c => c.BookDetailPage)
  }
 ```

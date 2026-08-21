@@ -1,31 +1,37 @@
 ```typescript
-export class BookNewComponent {
+export class BookNewPage {
 ...
   form: FormGroup<BookForm> = this.formBuilder.group({
    ...
-    authors: this.formBuilder.array(['', [Validators.required, validAuthorName()]]),
+    authors: this.formBuilder.array([
+      ['', [Validators.required, validAuthorName()]]
+    ]),
    ...
   });
 
-  addAuthor() {
-    this.form.controls.authors.controls.push(this.formBuilder.control('', [Validators.required, validAuthorName()]));
+  get authors(): FormArray {
+    return this.form.controls.authors;
   }
-  
+
+  addAuthor() {
+    this.authors.push(this.formBuilder.control('', [Validators.required, validAuthorName()]));
+  }
+
   deleteAuthor(index: number) {
-    this.form.controls.authors.removeAt(index);
+    this.authors.removeAt(index);
   }
 }
 ```
 
 ```html
   <ng-container formArrayName="authors">
-  @for(author of authors.controls; track author){
+  @for (author of authors.controls; track author; let index = $index) {
       <label class="form-field">
         <span>Author</span>
-        <input [formControlName]="$index" />
+        <input [formControlName]="index" />
         <!-- <small> .... </small>-->
       </label>
-      <button (click)="deleteAuthor($index)">
+      <button (click)="deleteAuthor(index)">
         Remove Author
       </button>
   }

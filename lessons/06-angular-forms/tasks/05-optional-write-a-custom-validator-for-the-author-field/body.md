@@ -1,7 +1,7 @@
-- Create a folder `validators` and add a file `author.validator.ts`
+- Create a folder `validators` and add a file `author.ts`
 - Create a function called `validAuthorName()` that returns a `ValidatorFn`: `return (control:AbstractControl) : ValidationErrors | null => {..}`
 -  Exract the value from the control and check if there are any digits inside the given string. (Hint: you can use a Regex for is: `/[0-9]+/.test(value)`
 -  If the value contains any digits return an `ValidationError`: `{ invalidAuthor: true }` otherwise return a `null`-Value
 -  Add custom Validator as a second Validator to your Author-`FormControl` 
 -  Add another `<small>`-Tag beneath the `<input>`-Tag for the Author. 
--  This Tag should be displayed as soon as the custom Validator `validAuthorName` sets the `FormControl` in an error State (`form.controls.author.hasError('invalidAuthor')`) with the text "Der Name eines Autors darf keine Zahlen beinhalten"
+-  This Tag should be displayed as soon as the custom Validator `validAuthorName` sets the `FormControl` in an error State (`form.controls.author.hasError('invalidAuthor')`) with the text "Name must not contain digits"

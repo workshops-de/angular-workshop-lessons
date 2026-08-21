@@ -1,6 +1,5 @@
-- Start our HTTP-Server `bookmonkey-api` in your shell.
-- Import `provideHttpClient` in `app.config.ts` and add it to the `providers` array.
-- Inject `HttpClient` via `private readonly http = inject(HttpClient)` in `BookApiService`
-- Load data from local API in `BookApiService` service via `http.get(URL)`. Use the following API url for that: `http://localhost:4730/books`.
-- Extends the `Book` interface with properties for cover and isbn.
-- Use the isbn property of Book as key for the track function (`@for`) in the `BookComponent` template .
+- **Start the API** Start our HTTP-Server `bookmonkey-api` in your shell.
+- **Provide the HttpClient** Import `provideHttpClient` in `app.config.ts` and add it to the `providers` array.
+- **Load data from the API** Inject `HttpClient` via `private readonly http = inject(HttpClient)` in `BooksClient`. Load data from the local API in `BooksClient` via `http.get(URL)`. Use the following API url for that: `http://localhost:4730/books`.
+- **Extend the `Book` interface** Extend the `Book` interface with properties for cover and isbn.
+- **Track by isbn** Use the isbn property of `Book` as key for the track function (`@for`) in the `BooksPage` template.

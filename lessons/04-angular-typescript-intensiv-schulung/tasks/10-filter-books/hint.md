@@ -1,28 +1,33 @@
+## Filtering inside the pipe
+
 ```ts
-// book-filter.pipe.ts
+// book-filter.ts
 // filters an array and checks if the title contains 'Hello'
 books.filter((book) => book.title.includes('Hello'))
-
 ```
 
+## Wiring the search input
+
 ```html
-<!-- app.component html -->
+<!-- books-page.html -->
 
 <!-- search input -->
-<input (input)="updateBookSearchTerm($event)">
+<input (input)="updateBookSearchTerm($event.target.value)">
 
 <!--  use pipe -->
-@for(book of books | bookFilter: bookSearchTerm; track book.title){
+@for(book of books | bookFilter: bookSearchTerm(); track book.title){
 <app-book-card ...>
 	...
 ```
 
-```ts
-// app.component.ts
+## Storing the search term as a signal
 
-// store input value in property
-updateBookSearchTerm(input: Event) {
-  this.bookSearchTerm = (input.target as HTMLInputElement).value;
-  //                                  ^ tells the TypeScript-Compiler to treat the target property as HTMLInputElement
+```ts
+// books-page.ts
+bookSearchTerm = signal('');
+
+// store input value in the signal
+updateBookSearchTerm(searchTerm: string) {
+  this.bookSearchTerm.set(searchTerm);
 }
 ```

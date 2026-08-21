@@ -1,6 +1,6 @@
 ## Lazy load the book route
 
-- Create a new file `book.routes.ts` inside the book folder to configure child routes.
+- Create a new file `book.routes.ts` inside the `books` folder to configure child routes.
 - Transfer the routes _books/detail_ & _books_ from  _app.routes.ts_ to `book.routes.ts`.
   - Pay attention to the hints: The paths will slightly change.
 - Add a lazy loaded route for the path `books` loading the `book.routes.ts` in _app.routes.ts_.
@@ -11,6 +11,6 @@
 ## Lazy load the book details route
 
 - We can be even more lazy
-- The `BookDetailsComponent` might not me loaded up front
+- `BookDetailPage` might not need to be loaded up front
 - use `loadComponent` to load it lazily
-- Verify that a several chunk is generated and loaded for `BookDetailsComponent`
+- Verify that a separate chunk is generated and loaded for `BookDetailPage`

@@ -1,9 +1,9 @@
 ```typescript
-// book.component.ts
-this.books$ = this.bookApiService.getAll();
+// books-page.ts
+books$ = this.booksClient.getAll();
 ```
 
 ```html
-<!-- book.component.html -->
-  @for (book of books$ | async | bookFilter: searchTerm; track book.isbn) {
+<!-- books-page.html -->
+  @for (book of books$ | async | bookFilter: bookSearchTerm(); track book.isbn) {
 ```

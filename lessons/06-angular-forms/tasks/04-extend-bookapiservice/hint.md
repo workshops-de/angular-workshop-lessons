@@ -1,15 +1,15 @@
 ```typescript
-// book-api.service.ts
-create(book: Book): Observable<Book> {
+// books-client.ts
+create(book: Partial<Book>): Observable<Book> {
   return this.http.post<Book>('http://localhost:4730/books', book)
 }
 ```
 
 ```typescript
-// book-new.component.ts
-private bookApiService = inject(BookApiService)
+// book-new-page.ts
+private readonly booksClient = inject(BooksClient);
 ...
 submit() {
-  this.bookApiService.create(this.form.getRawValue() as Book).subscribe()
+  this.booksClient.create(this.form.getRawValue()).subscribe()
 }
 ```

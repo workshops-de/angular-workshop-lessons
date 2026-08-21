@@ -5,11 +5,15 @@ If not already installed
 npx bookmonkey-api
 ```
 
+## Providing HttpClient
+
 ```typescript
 import { provideHttpClient } from '@angular/common/http';
 
 providers: [provideHttpClient()]
 ```
+
+## Loading books in BooksClient
 
 ```typescript
 import { HttpClient } from '@angular/common/http';
@@ -21,7 +25,6 @@ return this.http.get<Book[]>('http://localhost:4730/books')
 ```
 
 ```typescript
-// ... using the service in the component (should already be done :-))
-this.bookApiService.getBooks().subscribe(...
+// ... using the service in BooksPage (should already be done :-))
+this.booksClient.getAll().subscribe(...
 ```
-

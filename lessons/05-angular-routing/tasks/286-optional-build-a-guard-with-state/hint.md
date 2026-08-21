@@ -2,13 +2,13 @@
 @Injectable({
   providedIn: 'root'
 })
-export class UserStateService {
-  //...
+export class UserState {
+  isLoggedIn = true;
 }
 ```
 
 ```ts
-const service = inject(UserStateService);
+const service = inject(UserState);
 ```
 
 ```ts

@@ -1,5 +1,3 @@
-- _BONUS_ type the `transform` method as good as possible
-
-- Extract the input field into its own Component. 
-
-- Style the filter-control (refer to the solution to get some inspiration)
+- **Type it well** _BONUS_ type the `transform` method as good as possible.
+- **Extract the input** Extract the input field into its own Component.
+- **Style it** Style the filter-control (refer to the solution to get some inspiration).

@@ -1,15 +1,19 @@
+## Declaring and emitting the output
+
 ```ts
-// src/app/book-card/book-card.component.ts
+// src/app/books/book-card/book-card.ts
 
 // Output-Binding
-detailClick = output<Book>();
+readonly detailClick = output<Book>();
 
 // Emit an event
 this.detailClick.emit(this.content());
 ```
 
+## Handling the event in App
+
 ```ts
-// src/app/app.component.ts
+// src/app/app.ts
 
 // handling detailClick-Event
 goToBookDetails(book: Book) {

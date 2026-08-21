@@ -1,7 +1,11 @@
+## Typing the input signal
+
+`input.required<Book>()` removes the `undefined` case entirely — the signal always resolves to a `Book`.
+
 ```ts
-// app.component.ts
+// app.ts
 book: Book = { /* ... */ };
 
-// book-card.component.ts
-content = input.required<Book>();
+// book-card.ts
+readonly content = input.required<Book>();
 ```

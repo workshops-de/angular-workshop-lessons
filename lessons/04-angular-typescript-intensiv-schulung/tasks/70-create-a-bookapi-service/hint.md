@@ -1,13 +1,12 @@
-**Generate with Angular CLI**
+## Generate with Angular CLI
 
 ```bash
-ng generate service book/book-api
+ng generate service books/books-client
 ```
 
-**Code:**
+## Injecting the service
 
 ```typescript
-// book.component.ts
-private readonly bookApi = inject(BookApiService)
+// books-page.ts
+private readonly booksClient = inject(BooksClient);
 ```
-

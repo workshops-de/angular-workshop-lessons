@@ -1,6 +1,6 @@
 ```typescript
-private formBuilder = inject(FormBuilder)
-this.form = this.formBuilder.group({
+private readonly formBuilder = inject(NonNullableFormBuilder);
+form = this.formBuilder.group({
     author: ['', [Validators.required]],
     title: ['', [Validators.required]],
     subtitle: [''],
@@ -9,7 +9,7 @@ this.form = this.formBuilder.group({
 ```
 
 ```html
-<form [formGroup]="form" (ngSubmit)="create()">
+<form [formGroup]="form" (ngSubmit)="submit()">
   <label>
     <span>Title</span>
     <input formControlName="title" />

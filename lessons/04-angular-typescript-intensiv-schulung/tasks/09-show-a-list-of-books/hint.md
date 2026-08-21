@@ -1,5 +1,7 @@
+## The books list
+
 ```ts
-// app.component.ts
+// app.ts
 books: Book[] = [
   {
     title: 'How to win friends',
@@ -19,8 +21,10 @@ books: Book[] = [
 ];
 ```
 
+## Rendering the list with @for
+
 ```html
-<!-- app.component.html -->
+<!-- app.html -->
 @for(book of books; track book.title){
   <app-book-card ... >
 }

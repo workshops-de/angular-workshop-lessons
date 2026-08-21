@@ -1,33 +1,28 @@
 3, 2, 1 Go! Now you will create your first component.
 
-- Open a second terminal.
-- Switch to the directory where your Angular project is located.
-- Create a new component by executing the following command `ng generate component book-card`.
-- Recognize that three files are generated.
-- Recognize that your component (_book-card.component.ts_) has the selector `app-book-card`.
+- **Generate the component** Open a second terminal, switch to the directory where your Angular project is located, and execute `ng generate component books/book-card`. Recognize that two files are generated and that your component (_book-card.ts_) has the selector `app-book-card`.
 
-- Open _src/app/book-card/book-card.component.html_.
-- Set up a simple HTML template visualizing book-information by using **static data**.
+- **Build a static template** Open _src/app/books/book-card/book-card.html_ and set up a simple HTML template visualizing book-information by using **static data**.
   - title
   - author
   - details-link
   - abstract
-  
+
   ```html
-  <!-- book-card.component.html -->
-  
+  <!-- book-card.html -->
+
   <h3>Moby Dick</h3>
-  <h4>Herman Melville</h4>  
+  <h4>Herman Melville</h4>
 
   <!--
   ... link, abstract ...
   -->
   ```
 
-- Use your component in _app.component.html_. Replace the existing content of _app.component.html_ with `<app-book-card></app-book-card>`.
-- Add the missing import for `BookCardComponent` to imports in _app.component.ts_.
-- Ensure that your component is displayed in the browser.
-- Check [localhost:4200](http://localhost:4200).
+---
+
+- **Use the component in _App_** Use your component in _app.html_. Replace the existing content of _app.html_ with `<app-book-card />`. Add the missing import for `BookCard` to imports in _app.ts_.
+- **Verify** Ensure that your component is displayed in the browser. Check [localhost:4200](http://localhost:4200).
 
 ## How the component could look like
 

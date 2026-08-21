@@ -1,4 +1,4 @@
-- Create a guard function: `ng generate guard book/confirm-leave`.
-- Use `window.confirm` to ask the user if he really want to leave the page.
+- Create a guard function: `ng generate guard books/confirm-leave`.
+- Use `window.confirm` to ask the user if he really wants to leave the page.
 - Open `book.routes.ts`.
-- Add the guard to the route `detail/:isbn` (component: BookDetailComponent).
+- Add the guard to the route `detail/:isbn` (component: `BookDetailPage`).

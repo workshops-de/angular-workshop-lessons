@@ -1,8 +1,11 @@
-```
+## Importing BookCard into App
+
+Add `BookCard` to the `imports` array of the `@Component` decorator so its selector `app-book-card` becomes available in the template.
+
+```ts
 @Component({
   selector: 'app-root',
-  imports: [BookCardComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [BookCard],
+  templateUrl: './app.html'
 })
 ```

@@ -6,15 +6,15 @@ https://angular.dev/guide/components/lifecycle#summary
 // ...
 import { Subscription } from 'rxjs';
 
-export class BookComponent implements <INSERT HOOKS HERE SEPERATED BY COMMA> {
+export class BooksPage implements <INSERT HOOKS HERE SEPERATED BY COMMA> {
   private subscription = Subscription.EMPTY;
   
   // ... constructor
   ngOnInit(): void {
     // load data via service here
     // watch out: maybe the service is named differently in you code.
-    // this.bookDataService is just an example
-    this.subscription = this.bookDataService. ... .subscribe(<successFn>);
+    // this.booksClient is just an example
+    this.subscription = this.booksClient. ... .subscribe(<successFn>);
   }
   
   ngOnDestroy(): void {

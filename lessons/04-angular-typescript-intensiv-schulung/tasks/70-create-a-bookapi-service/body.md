@@ -1,6 +1,2 @@
-- Create a service handling Book-API operations 
-- Execute the following Angular CLI command: `ng generate service book/book-api`.
-- Implement the method `getAll()` and make it return the example books from _BookComponent_.
-- Remove example books from _BookComponent_
-- Inject `BookApiService` into the _BookComponent_.
-- Replace example books of _BookComponent_ by calling `getAll()` from`BookApiService`
+- **Generate the service** Execute the following Angular CLI command: `ng generate service books/books-client`. Implement the method `getAll()` and make it return the example books from _BooksPage_.
+- **Use the service in `BooksPage`** Remove the example books from _BooksPage_. Inject `BooksClient` into _BooksPage_ using `inject()` and replace the example books of _BooksPage_ by calling `getAll()` from `BooksClient`.

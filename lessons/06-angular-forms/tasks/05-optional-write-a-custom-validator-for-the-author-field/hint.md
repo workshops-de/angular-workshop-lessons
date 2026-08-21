@@ -1,5 +1,5 @@
 ```typescript
-// author.validator.ts
+// author.ts
 import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 
 export function validAuthorName(): ValidatorFn {
@@ -16,9 +16,9 @@ export function validAuthorName(): ValidatorFn {
 ```
 
 ```typescript
-// book-new.component.ts
+// book-new-page.ts
 
-this.form.nonNullable.group({
+this.formBuilder.group({
       author:  ['', [Validators.required, validAuthorName()]],
       title: ['', [Validators.required]],
       ....

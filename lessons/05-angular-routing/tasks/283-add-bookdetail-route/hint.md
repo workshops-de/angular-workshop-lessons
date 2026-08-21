@@ -1,43 +1,45 @@
-**Implement the Component**
- 
+## Implement the component
+
 ```ts
-// book-detail.component.ts
+// book-detail-page.ts
 
 import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs';
 
-private readonly route  = inject(ActivatedRoute);
-private readonly bookApi  = inject(BookApiService);
-```
+private readonly route = inject(ActivatedRoute);
+private readonly booksClient = inject(BooksClient);
 
-```ts
-ngOnInit () {
-  this.route.params.subscribe((params) => { ... });
+book$: Observable<Book>;
+
+constructor() {
+  this.book$ = this.route.params.pipe(
+    switchMap(params => this.booksClient.getByIsbn(params?.['isbn']))
+  );
 }
 ```
 
-**Extend BookComponent**
+## Extend BooksPage
 
 ```ts
-// book.component.ts
+// books-page.ts
 
-private readonly router  = inject(Router);
-private readonly bookApi  = inject(BookApiService);
+private readonly router = inject(Router);
 
 goToBookDetails(book: Book) {
   this.router.navigate(['books', 'detail', book.isbn]);
 }
 ```
 
-
-**Extend your routes definitions**
+## Extend your routes definitions
 
 ```ts
 // app.routes.ts
 
-{ path: 'books/detail/:isbn', component: BookDetailComponent }
+{ path: 'books/detail/:isbn', component: BookDetailPage }
 ```
 
-**Extend and use the Service with a getBookByIsbn(isbn: string)**
+## Extend and use the client with a getByIsbn(isbn: string)
+
 ```
 HTTP GET http://localhost:4730/books/:isbn
 ```

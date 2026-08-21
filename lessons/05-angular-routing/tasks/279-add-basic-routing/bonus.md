@@ -1,41 +1,13 @@
-#### navigation.component.html
+#### navigation.html
 
-```
-<ul>
-  <li><a class="active" routerLink="/books">Books</a></li>
-  <li><a routerLink="/about">About</a></li>
+```html
+<ul class="m-0 flex list-none bg-gray-800 p-0">
+  <li><a routerLink="/books" routerLinkActive="bg-green-500" class="block px-4 py-3.5 text-center text-white hover:bg-black">Books</a></li>
+  <li><a routerLink="/about" routerLinkActive="bg-green-500" class="block px-4 py-3.5 text-center text-white hover:bg-black">About</a></li>
 </ul>
-```
-#### navigation.component.scss
-
-```
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-  li {
-    float: left;
-  }
-  a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    &:hover:not(.active) {
-      background-color: #111;
-    }
-    &.active {
-      background-color: #4CAF50;
-    }
-  }
-}
 ```
 
 ##### Bonus Task
-Find a way to dynamically highlight active navigation items
+Find a way to dynamically highlight active navigation items using Tailwind utility classes.
 
-
-<details> <summary>Bonus hint</summary>`routerLinkActive="active"`</details>
+<details> <summary>Bonus hint</summary>`routerLinkActive="bg-green-500"`</details>
