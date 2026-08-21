@@ -10,3 +10,7 @@ Slides live at Google Slides.
 Topics are spread among different presentations.
 
 Use `./.claude/skills/google-slides-workshop-teacher` to learn how slides are updated.
+
+# Sample Solutions
+
+The `sample-solution` directory (in the `angular-workshop` repository, added there as a git submodule pointing to `git@github.com:workshops-de/angular-workshop.git`) contains the sample solutions for the lessons' tasks. Each commit in that submodule is the solution to one task.
