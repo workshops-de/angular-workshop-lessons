@@ -1,0 +1,3 @@
+[submodule "sample-solution"]
+	path = sample-solution
+	url = git@github.com:workshops-de/angular-workshop.git
