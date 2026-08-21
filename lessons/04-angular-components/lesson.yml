@@ -1,7 +1,7 @@
-name: "Angular & TypeScript Intensiv-Schulung"
+name: Angular Components
 position: 4
-trainer: "gregor@entwicklungszeit.dev"
-slides_type: google_slides
+trainer: 'gregor@entwicklungszeit.dev'
+slides_type: slidev
 github_code_url: https://github.com/workshops-de/angular-workshop
 git_tag_starting: main
 google_slide_id: 1KJMDvEUIWDHluMPLffiBnadVSO2IElTAs7jPsMadehw
