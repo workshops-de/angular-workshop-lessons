@@ -1,9 +1,8 @@
-## Filtering inside the pipe
+## Storing the search term as a signal
 
 ```ts
-// book-filter.ts
-// filters an array and checks if the title contains 'Hello'
-books.filter((book) => book.title.includes('Hello'))
+// books-page.ts
+bookSearchTerm = signal('');
 ```
 
 ## Wiring the search input
@@ -11,23 +10,30 @@ books.filter((book) => book.title.includes('Hello'))
 ```html
 <!-- books-page.html -->
 
-<!-- search input -->
-<input (input)="updateBookSearchTerm($event.target.value)">
-
-<!--  use pipe -->
-@for(book of books | bookFilter: bookSearchTerm(); track book.title){
-<app-book-card ...>
-	...
+<!-- search input, sets the signal directly -->
+<input (input)="bookSearchTerm.set($event.target.value)" />
 ```
 
-## Storing the search term as a signal
+## Filtering with `computed`
 
 ```ts
 // books-page.ts
-bookSearchTerm = signal('');
+import { computed, signal } from '@angular/core';
 
-// store input value in the signal
-updateBookSearchTerm(searchTerm: string) {
-  this.bookSearchTerm.set(searchTerm);
-}
+// filters the books array and checks if the title contains the search term
+booksComputed = computed(() => {
+  const searchTerm = this.bookSearchTerm().toLowerCase();
+
+  return this.books.filter(book =>
+    book.title.toLowerCase().includes(searchTerm)
+  );
+});
+```
+
+```html
+<!-- books-page.html -->
+
+<!-- use the computed signal -->
+@for (book of booksComputed(); track book.title) {
+<app-book-card ...> ...</app-book-card>
 ```
