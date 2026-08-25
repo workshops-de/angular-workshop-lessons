@@ -1,8 +1,0 @@
-- Store the `getAll()`-Observable in a class property (e.g. `books$`)
-- Import the `AsyncPipe` into your `BooksPage` `imports` array
-- Use the Observable and async pipe to subscribe and unsubscribe inside your `@for`
-- **Warning**: This change affects the typing in the template
-  - async returns either `Book[]` or `null`
-  - You may need to adjust `BookFilter` to deal with `null`-Values.
-- Now, you can remove all code dealing with subscribing or unsubscribing from the Observable.
-	- This should save a couple lines of code.

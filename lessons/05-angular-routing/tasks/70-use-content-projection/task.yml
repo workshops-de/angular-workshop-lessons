@@ -1,7 +1,7 @@
-title: Use a Signal
-position: 160
+title: Use Content Projection
+position: 70
 category: General
 preparation: false
 estimated_time_in_minutes: 10
 always_unlocked: false
-git_tag_completed: solve--use-a-signal
+git_tag_completed: solve--content-projection
