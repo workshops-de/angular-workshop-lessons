@@ -1,28 +1,28 @@
 ## Storing the search term as a signal
 
 ```ts
-// books-page.ts
-bookSearchTerm = signal('');
+// app.ts
+searchTerm = signal('');
 ```
 
 ## Wiring the search input
 
 ```html
-<!-- books-page.html -->
+<!-- app.html -->
 
 <!-- search input, sets the signal directly -->
-<input (input)="bookSearchTerm.set($event.target.value)" />
+<input (input)="searchTerm.set($event.target.value)" />
 ```
 
 ## Filtering with `computed`
 
 ```ts
-// books-page.ts
+// app.ts
 import { computed, signal } from '@angular/core';
 
 // filters the books array and checks if the title contains the search term
 booksComputed = computed(() => {
-  const searchTerm = this.bookSearchTerm().toLowerCase();
+  const searchTerm = this.searchTerm().toLowerCase();
 
   return this.books.filter(book =>
     book.title.toLowerCase().includes(searchTerm)
@@ -31,7 +31,7 @@ booksComputed = computed(() => {
 ```
 
 ```html
-<!-- books-page.html -->
+<!-- app.html -->
 
 <!-- use the computed signal -->
 @for (book of booksComputed(); track book.title) {
