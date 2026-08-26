@@ -4,18 +4,17 @@
 
 ---
 
-- **Set up the form group** Add `ReactiveFormsModule` to the imports-Array of `BookNewPage`. Inside the `book-new-page.ts`-File:
-	- inject the `NonNullableFormBuilder` from `@angular/forms`
-	- Create a `FormGroup` by calling the `group`-Function on the injected `NonNullableFormBuilder`
-	- The formGroup should have Controls for  `isbn`,`author`,`title`,`subtitle`, and `abstract`
+We are going to build the form with **Signal Forms**, Angular's new signal-based forms package (`@angular/forms/signals`). Instead of assembling a tree of `FormControl`/`FormGroup` instances, a Signal Form wraps a plain `signal()` holding your data model, and derives the whole form state (validity, dirty, errors, ...) reactively from it.
+
+- **Create the data model** Inside `book-new-page.ts`, create a `signal()` called `model` holding a plain object with the fields `isbn`, `title`, `subtitle`, `author`, and `abstract` (all empty strings).
+- **Create the form** Call the `form()`-Function from `@angular/forms/signals`, passing in the `model` signal, and assign the result to a `form` property.
+- **Import the directives** Add `FormRoot` and `FormField` from `@angular/forms/signals` to the `imports`-Array of `BookNewPage`.
 
 ---
 
 - **Build the template** Inside the `book-new-page.html`-File:
-	- Add a `<form>`-Tag and bind the created `form` Property to the `[formGroup]`-Directive
-	- For each created Control inside the FormGroup create one `<input>`-Tag and bind the FormControl-Keys to the `formControlName`-Directive
-	- Also add a Submit-Button with `type=submit`
-	- In order to get notified if the user clicks on this button register to the `(ngSubmit)`-Event inside the `<form>`-Tag and bind it to a `submit()`-function
-	- Implement this function as well inside the `book-new-page.ts`-File. Inside this function you can just log the `form` on the `console`
+  - Add a `<form>`-Tag and bind the created `form` Property to the `[formRoot]`-Directive
+  - For each field of your model create one `<input>`-Tag and bind it to the matching field with the `[formField]`-Directive, e.g. `[formField]="form.isbn"`
+  - Also add a Submit-Button with `type=submit`, disabled while the form is invalid via `[disabled]="form().invalid()"`
 
-Run the application inside the Browser: You should see your form. After you filled it out and clicked on the Submit-Button you should see the whole `FormGroup`-Object inside your Browser Developer Console.
+Run the application inside the Browser: You should see your form and be able to type into every field.

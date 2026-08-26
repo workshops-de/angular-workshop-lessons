@@ -1,7 +1,7 @@
-title: Extend BookApiService
+title: Submit the Form via BookApiService
 position: 30
 category: General
 preparation: false
 estimated_time_in_minutes: 15
 always_unlocked: false
-git_tag_completed: solve--extend-book-api-service
+git_tag_completed: solve--form-submission-via-api-client

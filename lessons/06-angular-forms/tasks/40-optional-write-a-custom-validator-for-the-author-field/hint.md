@@ -1,26 +1,26 @@
 ```typescript
-// author.ts
-import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
+// validators/author.ts
+import { SchemaPath, validate } from '@angular/forms/signals';
 
-export function validAuthorName(): ValidatorFn {
-    return (control:AbstractControl) : ValidationErrors | null => {
-        const value = control.value;
-        if (!value) {
-            return null;
-        }
+export function validAuthorName(schemaPath: SchemaPath<string>): void {
+  validate(schemaPath, field => {
+    const authorName = field.value();
 
-        const hasNumeric = /[0-9]+/.test(value);
-        return hasNumeric ? { invalidAuthor : true }: null;
-    }
+    if (!authorName) return null;
+
+    const hasNumeric = /[0-9]+/.test(authorName);
+    return hasNumeric ? { kind: 'invalidAuthor', message: 'Name must not contain digits' } : null;
+  });
 }
 ```
 
 ```typescript
 // book-new-page.ts
+import { validAuthorName } from '../validators/author';
 
-this.formBuilder.group({
-      author:  ['', [Validators.required, validAuthorName()]],
-      title: ['', [Validators.required]],
-      ....
-    }, )
+protected readonly form = form(this.model, schemaPath => {
+  required(schemaPath.author, { message: 'Please insert an Author.' });
+  validAuthorName(schemaPath.author);
+  ....
+});
 ```

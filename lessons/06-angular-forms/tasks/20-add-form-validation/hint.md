@@ -1,30 +1,43 @@
 ```typescript
-private readonly formBuilder = inject(NonNullableFormBuilder);
-form = this.formBuilder.group({
-    author: ['', [Validators.required]],
-    title: ['', [Validators.required]],
-    subtitle: [''],
-    abstract: [''],
+// book-new-page.ts
+import { form, FormField, FormRoot, required } from '@angular/forms/signals';
+
+protected readonly model = signal({
+  isbn: '',
+  title: '',
+  subtitle: '',
+  author: '',
+  abstract: ''
+});
+
+protected readonly form = form(this.model, schemaPath => {
+  required(schemaPath.isbn, { message: 'Please insert an ISBN.' });
+  required(schemaPath.title, { message: 'Please insert a title.' });
+  required(schemaPath.author, { message: 'Please insert an Author.' });
 });
 ```
 
 ```html
-<form [formGroup]="form" (ngSubmit)="submit()">
+<form [formRoot]="form">
   <label>
     <span>Title</span>
-    <input formControlName="title" />
-@if(form.get('title')?.dirty && form.get('title')?.hasError('required')){
-      <small>Please insert a title. </small>
-}
+    <input [formField]="form.title" />
+    @if (form.title().touched()) {
+      @for (error of form.title().errors(); track error.kind) {
+        <small>{{ error.message }}</small>
+      }
+    }
   </label>
   <label>
     <span>Author</span>
-    <input formControlName="author" />
-@if(form.get('author')?.dirty && form.get('author')?.hasError('required')){
-      <small>Please insert a title.</small>
-}
+    <input [formField]="form.author" />
+    @if (form.author().touched()) {
+      @for (error of form.author().errors(); track error.kind) {
+        <small>{{ error.message }}</small>
+      }
+    }
   </label>
   ....
-  <button type="submit" [disabled]="form.invalid">Save</button>
-</form>	
+  <button type="submit" [disabled]="form().invalid()">Save</button>
+</form>
 ```

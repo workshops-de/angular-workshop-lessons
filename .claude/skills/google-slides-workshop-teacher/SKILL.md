@@ -12,12 +12,12 @@ Driver-Software nötig, da die Präsentationen direkt über MCP ansteuerbar sind
 
 ## Bekannte Präsentationen
 
-| Präsentation    | ID                                             |
-| --------------- | ---------------------------------------------- |
-| Angular Basics  | `1KJMDvEUIWDHluMPLffiBnadVSO2IElTAs7jPsMadehw` |
-| Angular Routing | `193jtyGRGHGKr7gwHP-jWj8IcENWggzpPClVxmFgPAkY` |
-| Angular Testing | `1zRNyaH3lcOhChTl4VIetlSV8WScYLzxvzZ3Mx8zp8xA` |
-| Angular Forms   | `1Ue8_s_nz09Yc0RT2I38fmE5hlbF8oz_quzSRODPX_ZA` |
+| Präsentation         | ID                                             |
+| -------------------- | ---------------------------------------------- |
+| Angular Basics       | `1KJMDvEUIWDHluMPLffiBnadVSO2IElTAs7jPsMadehw` |
+| Angular Routing      | `193jtyGRGHGKr7gwHP-jWj8IcENWggzpPClVxmFgPAkY` |
+| Angular Testing      | `1zRNyaH3lcOhChTl4VIetlSV8WScYLzxvzZ3Mx8zp8xA` |
+| Angular Signal Forms | `1DLlkWJBHaFRXL0tUaj83I19IQg5tJJk8DjK8ZhNvv1I` |
 
 ## Ablauf
 
