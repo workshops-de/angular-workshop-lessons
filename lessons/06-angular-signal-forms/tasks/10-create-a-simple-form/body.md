@@ -1,13 +1,23 @@
 - **Generate `BookNewPage`** Create a new Component `BookNewPage` for the Book-Feature with `ng generate component books/book-new/book-new-page`.
+
+---
+
 - **Add the route** Configure a new Route inside the `book.routes.ts` File, displaying the `BookNewPage` (path: new).
+
+---
+
 - **Link to it** Add a link from `BooksPage` with `routerLink` to the `new` route.
 
 ---
 
-We are going to build the form with **Signal Forms**, Angular's new signal-based forms package (`@angular/forms/signals`). Instead of assembling a tree of `FormControl`/`FormGroup` instances, a Signal Form wraps a plain `signal()` holding your data model, and derives the whole form state (validity, dirty, errors, ...) reactively from it.
-
 - **Create the data model** Inside `book-new-page.ts`, create a `signal()` called `model` holding a plain object with the fields `isbn`, `title`, `subtitle`, `author`, and `abstract` (all empty strings).
+
+---
+
 - **Create the form** Call the `form()`-Function from `@angular/forms/signals`, passing in the `model` signal, and assign the result to a `form` property.
+
+---
+
 - **Import the directives** Add `FormRoot` and `FormField` from `@angular/forms/signals` to the `imports`-Array of `BookNewPage`.
 
 ---
