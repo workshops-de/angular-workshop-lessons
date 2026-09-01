@@ -7,6 +7,6 @@ ng generate service books/books-client
 ## Injecting the service
 
 ```typescript
-// books-page.ts
+// app.ts
 private readonly booksClient = inject(BooksClient);
 ```

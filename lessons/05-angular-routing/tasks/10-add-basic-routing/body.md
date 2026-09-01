@@ -1,3 +1,10 @@
+- **Refactor `App` into `BooksPage`** The book list has outgrown `App`. Generate a dedicated page component with `ng generate component books/books-page` and give it the selector `app-book`.
+  - Move the `books` signal, the `searchTerm` signal, `booksComputed`, the `BooksClient` injection and the `goToBookDetails` method from `App` into `BooksPage`.
+  - Move the search input and the `@for`-list from `app.html` into `books-page.html`.
+  - For now render `BooksPage` once from `app.html` via `<app-book />` (the next steps replace it with the router outlet).
+
+---
+
 - **Generate `AboutPage`** Create a new component `AboutPage` with `ng generate component about/about-page`.
 
 ---

@@ -6,15 +6,16 @@ Let's reuse everything we learned to build an Edit-Page for an existing book.
 
 ---
 
-- **Extend `BooksClient`** Add an `update(isbn: string, book: Partial<Book>)`-Method that sends a PUT request to `` `${baseUrl}/books/${isbn}` ``.
+- **Extend `BooksClient`** Add an `update(isbn: string, book: Partial<Book>)`-Method that sends a PUT request to `` `${baseUrl}/books/${isbn}` ``. Add a `getByIsbnResource(isbn: Signal<string>)`-Method that returns an `httpResource<Book>()` for `` `${baseUrl}/books/${isbn()}` ``.
 - **Read the route param** Inside `BookEditPage`, declare `protected readonly isbn = input.required<string>();` to receive the `:isbn` route param.
-- **Load the book** Inject `BooksClient` and load the book whenever `isbn()` changes, e.g. with `toObservable(this.isbn).pipe(switchMap(isbn => this.booksClient.getByIsbn(isbn)))`, converted back to a signal via `toSignal()`.
+- **Load the book** Inject `BooksClient` and call `getByIsbnResource(this.isbn)` — the resource re-fetches whenever `isbn()` changes.
 
 ---
 
-- **Seed the form's model** Create a `model`-signal, initialized with empty values for every field. Use an `effect()` that sets `model` to the loaded book as soon as it becomes available.
+- **Seed the form's model** Derive a `model` with `linkedSignal()`: use `bookResource.value` as `source` and a `computation` that maps the loaded book onto the empty form (falling back to the empty values while it's still loading).
 - **Build the form** Call `form()` with the `model` signal and a schema function, reusing `required()` and `validAuthorName()` from the previous tasks for `title` and `author`.
   - The `isbn` shouldn't be editable: mark it with `readonly(schemaPath.isbn)` inside the schema function.
+  - Disable the whole form while the book is loading: `disabled(schemaPath, { when: () => this.bookResource.isLoading() })`.
 - **Submit the form** Pass a `submission.action` that calls `BooksClient.update()` with `isbn()` and the current `model()`.
 - **Build the template** Reuse the markup from `BookNewPage`'s template — `[formRoot]`, `[formField]` per field, and the error-`@for`-Blocks.
 

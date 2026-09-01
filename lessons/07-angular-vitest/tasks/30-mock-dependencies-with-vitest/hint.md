@@ -2,7 +2,6 @@
 // books-page.spec.ts
 import { render, screen } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
-import { of } from 'rxjs';
 import { BooksPage } from './books-page';
 import { BooksClient } from './books-client';
 import { Book } from './book';
@@ -23,27 +22,32 @@ describe('BooksPage', () => {
     abstract: 'A self-help classic.'
   };
 
-  it('renders all books from the mocked BooksClient', async () => {
-    const booksClientMock: Partial<BooksClient> = {
-      getAll: vi.fn().mockReturnValue(of([mobyDick, friends]))
+  // getAll() returns an httpResource; BooksPage reads value()/isLoading()/error() off it.
+  function booksClientMock(books: Book[]): Partial<BooksClient> {
+    return {
+      getAll: vi.fn().mockReturnValue({
+        value: () => books,
+        isLoading: () => false,
+        error: () => undefined
+      } as unknown as ReturnType<BooksClient['getAll']>)
     };
+  }
+
+  it('renders all books from the mocked BooksClient', async () => {
+    const client = booksClientMock([mobyDick, friends]);
 
     await render(BooksPage, {
-      providers: [{ provide: BooksClient, useValue: booksClientMock }]
+      providers: [{ provide: BooksClient, useValue: client }]
     });
 
     expect(screen.getByText(mobyDick.title)).toBeInTheDocument();
     expect(screen.getByText(friends.title)).toBeInTheDocument();
-    expect(booksClientMock.getAll).toHaveBeenCalled();
+    expect(client.getAll).toHaveBeenCalled();
   });
 
   it('filters books by the search term', async () => {
-    const booksClientMock: Partial<BooksClient> = {
-      getAll: vi.fn().mockReturnValue(of([mobyDick, friends]))
-    };
-
     await render(BooksPage, {
-      providers: [{ provide: BooksClient, useValue: booksClientMock }]
+      providers: [{ provide: BooksClient, useValue: booksClientMock([mobyDick, friends]) }]
     });
 
     const user = userEvent.setup();

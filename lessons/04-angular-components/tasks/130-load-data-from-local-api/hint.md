@@ -24,7 +24,13 @@ import { Observable } from 'rxjs';
 return this.http.get<Book[]>('http://localhost:4730/books')
 ```
 
+## Consuming the Observable in App
+
+Bridge the Observable to a signal with `toSignal` so the template keeps working:
+
 ```typescript
-// ... using the service in BooksPage (should already be done :-))
-this.booksClient.getAll().subscribe(...
+// app.ts
+import { toSignal } from '@angular/core/rxjs-interop';
+
+books = toSignal(this.booksClient.getAll(), { initialValue: [] });
 ```

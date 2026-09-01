@@ -3,7 +3,7 @@
 - **Create a mock component** above your `describe`-block: `@Component({ selector: 'app-book-card', template: '<div data-testid="mock-book-card">{{ content().title }}</div>' })`, with `class BookCardMock { content = input.required<Book>(); }` — note the selector must match `BookCard`'s selector exactly (`app-book-card`) so it slots into the same place in `BooksPage`'s template.
 - **Swap it in**: `await render(BooksPage, { componentImports: [BookCardMock], providers: [...] });`.
 - **Write an `it('renders one book card per book, without depending on BookCard internals', ...)`**:
-  - Mock `BooksClient.getAll()` to return two books (like in the previous task).
+  - Mock `BooksClient.getAll()` to return a resource-shaped stub with two books (like in the previous task).
   - Query all rendered mock cards with `screen.getAllByTestId('mock-book-card')` and assert `.toHaveLength(2)`.
   - Assert the text content of each card with `.toHaveTextContent(...)`.
 

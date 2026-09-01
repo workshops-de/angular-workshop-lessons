@@ -17,9 +17,6 @@ Every 1st-class Angular building block can be **unit tested** in isolation. Let'
   - Define a small test `Book`-object and set it via `fixture.componentRef.setInput('content', book)` — `content` is a `required` Input, so it must be set before the first `detectChanges()`.
   - Call `fixture.detectChanges()`.
 - **Write an `it('should display the book title', ...)`**: query `fixture.nativeElement.querySelector('h3')` and assert its `textContent` contains your test book's title with `expect(...).toContain(...)`.
-- **Write a second `it('should emit detailClick when the details link is clicked', ...)`**:
-  - Subscribe to `component.detailClick` beforehand and record the emitted value.
-  - Query the `<a>`-Element and call `.click()` on it.
-  - Assert the recorded value equals your test book.
+- **Write a second `it('should display the author and abstract', ...)`**: query the `<h4>` and `<p>` elements and assert their `textContent` contains your test book's `author` / `abstract`.
 
 Run `npm test` — both cases should turn green.

@@ -13,14 +13,12 @@ describe('BookCard', () => {
     abstract: 'A whale of a tale.'
   };
 
-  let component: BookCard;
   let fixture: ComponentFixture<BookCard>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
 
     fixture = TestBed.createComponent(BookCard);
-    component = fixture.componentInstance;
     fixture.componentRef.setInput('content', book);
     fixture.detectChanges();
   });
@@ -30,14 +28,11 @@ describe('BookCard', () => {
     expect(title.textContent).toContain('Moby Dick');
   });
 
-  it('should emit detailClick when the details link is clicked', () => {
-    let emitted: Book | undefined;
-    component.detailClick.subscribe(value => (emitted = value));
+  it('should display the author and abstract', () => {
+    const host: HTMLElement = fixture.nativeElement;
 
-    const link: HTMLAnchorElement = fixture.nativeElement.querySelector('a');
-    link.click();
-
-    expect(emitted).toEqual(book);
+    expect(host.querySelector('h4')?.textContent).toContain('Herman Melville');
+    expect(host.querySelector('p')?.textContent).toContain('A whale of a tale.');
   });
 });
 ```

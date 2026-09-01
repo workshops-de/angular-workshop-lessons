@@ -4,9 +4,7 @@ Testing through `TestBed` directly involves a lot of repetitive boilerplate: man
 
 - **Rewrite `book-card.spec.ts`** to use ATL instead of raw `TestBed`:
   - Replace `TestBed.configureTestingModule` + `createComponent` + `setInput` + `detectChanges` with a single `await render(BookCard, { componentInputs: { content: book } })` call from `@testing-library/angular`.
-  - Replace `fixture.nativeElement.querySelector('h3')` with `screen.getByText(book.title)` and assert it `.toBeInTheDocument()`.
-  - For the emission test, pass a `vi.fn()` as `componentOutputs: { detailClick }`.
-  - Replace the manual `.click()` with `@testing-library/user-event`: create `const user = userEvent.setup();`, then `await user.click(screen.getByRole('link', { name: /details/i }));`.
-  - Assert the emission with `expect(detailClick).toHaveBeenCalledWith(book);`.
+  - Replace `fixture.nativeElement.querySelector(...)` with `screen.getByText(...)` and assert each is `.toBeInTheDocument()` — for the title, the author and the abstract.
+  - **Test the content projection**: `BookCard` renders whatever the parent projects via `<ng-content />` (that's how the "Details"-Link ends up inside the card since the content-projection task). Declare a tiny host component with the template `<app-book-card [content]="book">Details</app-book-card>` and `render()` it, then assert `screen.getByText('Details')` is in the document.
 
 Run `npm test` again. Compare the two versions side by side — which one reads closer to "what does a user actually see and do"?

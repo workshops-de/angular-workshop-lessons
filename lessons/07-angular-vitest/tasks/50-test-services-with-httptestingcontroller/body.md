@@ -4,7 +4,7 @@ So far you tested **components** through the DOM. The piece that actually talks 
 
 ---
 
-- **Write a `describe('BooksClient', ...)`-block** with two module-level `Book` fixtures (`mobyDick`, `friends` — reuse the shape from the previous tasks).
+- **Write a `describe('BooksClient', ...)`-block** with a module-level `Book` fixture (`mobyDick` — reuse the shape from the previous tasks).
 
 ---
 
@@ -13,16 +13,11 @@ So far you tested **components** through the DOM. The piece that actually talks 
   - `httpMock = TestBed.inject(HttpTestingController);`
   - `booksClient = TestBed.inject(BooksClient);` — it's `providedIn: 'root'`, so no need to list it as a provider.
 - Add an `afterEach(() => httpMock.verify());` — this fails the test if a request was fired that you never `expectOne`'d or `flush`'ed.
-- **`it('requests all books via GET', ...)`**:
-  - `let actual: Book[] | undefined;` then `booksClient.getAll().subscribe(books => (actual = books));`
-  - `const req = httpMock.expectOne('http://localhost:4730/books');`
-  - `expect(req.request.method).toBe('GET');`
-  - `req.flush([mobyDick, friends]);` — this resolves the Observable synchronously.
-  - `expect(actual).toEqual([mobyDick, friends]);`
-
----
-
-- **`it('requests a single book by ISBN', ...)`**: same pattern for `booksClient.getByIsbn(mobyDick.isbn)`, expecting `http://localhost:4730/books/${mobyDick.isbn}`, method `GET`, `flush(mobyDick)`.
+- **`it('requests a single book by ISBN', ...)`**:
+  - `let actual: Book | undefined;` then `booksClient.getByIsbn(mobyDick.isbn).subscribe(book => (actual = book));`
+  - `httpMock.expectOne(...)` for `http://localhost:4730/books/<isbn>`, assert method `GET`.
+  - `req.flush(mobyDick);` — this resolves the Observable synchronously.
+  - `expect(actual).toEqual(mobyDick);`
 
 ---
 
@@ -34,6 +29,11 @@ So far you tested **components** through the DOM. The piece that actually talks 
   - `expect(req.request.body).toEqual(draft);`
   - `req.flush({ ...draft });`
 
+---
+
+- **`it('updates a book via PUT', ...)`**: same pattern for `booksClient.update(mobyDick.isbn, changes)`, expecting `http://localhost:4730/books/${mobyDick.isbn}`, method `PUT`, body `changes`, `flush(changes)`.
+
 Run `npm test`.
 
-> The `subscribe` + captured-variable style works because `flush()` delivers the response synchronously. If you prefer `async/await`, `const actual = await lastValueFrom(booksClient.getAll());` right after the `flush()` reads just as well.
+> `getAll()` returns an `httpResource`, not an `Observable` — a resource fetches on its own inside an injection context, so it isn't exercised with the `subscribe()` + `expectOne()` pattern here. It is already covered at component level in `books-page.spec.ts`.
+> The `subscribe` + captured-variable style works because `flush()` delivers the response synchronously. If you prefer `async/await`, `const actual = await lastValueFrom(booksClient.getByIsbn(mobyDick.isbn));` right after the `flush()` reads just as well.

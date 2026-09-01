@@ -14,13 +14,6 @@ describe('BooksClient', () => {
     author: 'Herman Melville',
     abstract: 'A whale of a tale.'
   };
-  const friends: Book = {
-    isbn: '978-0-671-72322-5',
-    cover: '',
-    title: 'How to win friends',
-    author: 'Dale Carnegie',
-    abstract: 'A self-help classic.'
-  };
 
   let booksClient: BooksClient;
   let httpMock: HttpTestingController;
@@ -35,18 +28,6 @@ describe('BooksClient', () => {
   });
 
   afterEach(() => httpMock.verify());
-
-  it('requests all books via GET', () => {
-    let actual: Book[] | undefined;
-    booksClient.getAll().subscribe(books => (actual = books));
-
-    const req = httpMock.expectOne('http://localhost:4730/books');
-    expect(req.request.method).toBe('GET');
-
-    req.flush([mobyDick, friends]);
-
-    expect(actual).toEqual([mobyDick, friends]);
-  });
 
   it('requests a single book by ISBN', () => {
     let actual: Book | undefined;
@@ -77,5 +58,19 @@ describe('BooksClient', () => {
 
     req.flush({ ...draft });
   });
+
+  it('updates a book via PUT', () => {
+    const changes: Partial<Book> = { ...mobyDick, title: 'Moby Dick (revised)' };
+
+    booksClient.update(mobyDick.isbn, changes).subscribe();
+
+    const req = httpMock.expectOne(`http://localhost:4730/books/${mobyDick.isbn}`);
+    expect(req.request.method).toBe('PUT');
+    expect(req.request.body).toEqual(changes);
+
+    req.flush(changes);
+  });
 });
 ```
+
+> `getAll()` returns an `httpResource`, not an `Observable` — a resource fetches on its own inside an injection context, so it isn't exercised with the `subscribe()` + `expectOne()` pattern. It is covered at component level in `books-page.spec.ts`.

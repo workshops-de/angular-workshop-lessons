@@ -1,11 +1,11 @@
 
 ## Guard function
 
-- Import CanDeactivateFn interface from `@angular/router`
-- Add interface to your function as return value and implement the fat arrow function
+- Import the `CanDeactivateFn` interface from `@angular/router`
+- Type the guard with the guarded component (`BookDetailPage`) and implement the fat arrow function
 
 ```ts
-export const confirmLeaveGuardFn: CanDeactivateFn<MyComponent> = (component, route, state) => {
+export const confirmLeaveGuardFn: CanDeactivateFn<BookDetailPage> = (route, state) => {
   // ...
 };
 ```

@@ -4,7 +4,7 @@
 // book-detail-page.ts
 
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 
 private readonly route = inject(ActivatedRoute);
 private readonly booksClient = inject(BooksClient);

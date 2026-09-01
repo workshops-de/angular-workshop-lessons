@@ -9,7 +9,8 @@ export class BookNewPage {
     title: '',
     subtitle: '',
     authors: [''],
-    abstract: ''
+    abstract: '',
+    cover: ''
   });
 
   protected readonly form = form(this.model, schemaPath => {

@@ -1,36 +1,39 @@
 ```ts
 // book-card.spec.ts
+import { Component } from '@angular/core';
 import { render, screen } from '@testing-library/angular';
-import userEvent from '@testing-library/user-event';
 import { BookCard } from './book-card';
 import { Book } from '../book';
 
-describe('BookCard', () => {
-  const book: Book = {
-    isbn: '978-3-16-148410-0',
-    cover: '',
-    title: 'Moby Dick',
-    author: 'Herman Melville',
-    abstract: 'A whale of a tale.'
-  };
+const book: Book = {
+  isbn: '978-3-16-148410-0',
+  cover: '',
+  title: 'Moby Dick',
+  author: 'Herman Melville',
+  abstract: 'A whale of a tale.'
+};
 
-  it('should display the book title', async () => {
+describe('BookCard', () => {
+  it('displays the book data passed via the content input', async () => {
     await render(BookCard, { componentInputs: { content: book } });
 
     expect(screen.getByText(book.title)).toBeInTheDocument();
+    expect(screen.getByText('Herman Melville')).toBeInTheDocument();
+    expect(screen.getByText(book.abstract)).toBeInTheDocument();
   });
 
-  it('should emit detailClick when the details link is clicked', async () => {
-    const detailClick = vi.fn();
-    await render(BookCard, {
-      componentInputs: { content: book },
-      componentOutputs: { detailClick }
-    });
+  it('projects content placed between its tags', async () => {
+    @Component({
+      imports: [BookCard],
+      template: `<app-book-card [content]="book">Details</app-book-card>`
+    })
+    class HostComponent {
+      book = book;
+    }
 
-    const user = userEvent.setup();
-    await user.click(screen.getByRole('link', { name: /details/i }));
+    await render(HostComponent);
 
-    expect(detailClick).toHaveBeenCalledWith(book);
+    expect(screen.getByText('Details')).toBeInTheDocument();
   });
 });
 ```

@@ -1,5 +1,12 @@
 ```typescript
 // books-client.ts
+import { httpResource } from '@angular/common/http';
+import { Signal } from '@angular/core';
+
+getByIsbnResource(isbn: Signal<string>) {
+  return httpResource<Book>(() => ({ url: `${this.baseUrl}/books/${isbn()}` }));
+}
+
 update(isbn: string, book: Partial<Book>): Observable<Book> {
   return this.http.put<Book>(`${this.baseUrl}/books/${isbn}`, book);
 }
@@ -7,10 +14,9 @@ update(isbn: string, book: Partial<Book>): Observable<Book> {
 
 ```typescript
 // book-edit-page.ts
-import { Component, effect, inject, input, signal } from '@angular/core';
-import { toObservable, toSignal } from '@angular/core/rxjs-interop';
-import { form, FormField, FormRoot, readonly, required } from '@angular/forms/signals';
-import { firstValueFrom, switchMap } from 'rxjs';
+import { Component, inject, input, linkedSignal } from '@angular/core';
+import { disabled, form, FormField, FormRoot, readonly, required } from '@angular/forms/signals';
+import { firstValueFrom } from 'rxjs';
 import { BooksClient } from '../books-client';
 import { validAuthorName } from '../validators/author';
 
@@ -25,20 +31,12 @@ export class BookEditPage {
   private readonly booksClient = inject(BooksClient);
   protected readonly isbn = input.required<string>();
 
-  private readonly book = toSignal(
-    toObservable(this.isbn).pipe(switchMap(isbn => this.booksClient.getByIsbn(isbn)))
-  );
+  private readonly bookResource = this.booksClient.getByIsbnResource(this.isbn);
 
-  protected readonly model = signal(emptyBookForm);
-
-  constructor() {
-    effect(() => {
-      const loadedBook = this.book();
-      if (loadedBook) {
-        this.model.set({ ...emptyBookForm, ...loadedBook });
-      }
-    });
-  }
+  protected readonly model = linkedSignal({
+    source: this.bookResource.value,
+    computation: loadedBook => (loadedBook ? { ...emptyBookForm, ...loadedBook } : emptyBookForm)
+  });
 
   protected readonly form = form(
     this.model,
@@ -47,6 +45,7 @@ export class BookEditPage {
       required(schemaPath.title, { message: 'Please insert a title.' });
       required(schemaPath.author, { message: 'Please insert an Author.' });
       validAuthorName(schemaPath.author);
+      disabled(schemaPath, { when: () => this.bookResource.isLoading() });
     },
     {
       submission: {

@@ -2,7 +2,6 @@
 // books-page.spec.ts
 import { Component, input } from '@angular/core';
 import { render, screen } from '@testing-library/angular';
-import { of } from 'rxjs';
 import { BooksPage } from './books-page';
 import { BooksClient } from './books-client';
 import { Book } from './book';
@@ -31,14 +30,20 @@ describe('BooksPage', () => {
     abstract: 'A self-help classic.'
   };
 
-  it('renders one book card per book, without depending on BookCard internals', async () => {
-    const booksClientMock: Partial<BooksClient> = {
-      getAll: vi.fn().mockReturnValue(of([mobyDick, friends]))
+  function booksClientMock(books: Book[]): Partial<BooksClient> {
+    return {
+      getAll: vi.fn().mockReturnValue({
+        value: () => books,
+        isLoading: () => false,
+        error: () => undefined
+      } as unknown as ReturnType<BooksClient['getAll']>)
     };
+  }
 
+  it('renders one book card per book, without depending on BookCard internals', async () => {
     await render(BooksPage, {
       componentImports: [BookCardMock],
-      providers: [{ provide: BooksClient, useValue: booksClientMock }]
+      providers: [{ provide: BooksClient, useValue: booksClientMock([mobyDick, friends]) }]
     });
 
     const cards = screen.getAllByTestId('mock-book-card');
