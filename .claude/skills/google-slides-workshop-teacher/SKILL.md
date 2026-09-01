@@ -61,10 +61,30 @@ Driver-Software nötig, da die Präsentationen direkt über MCP ansteuerbar sind
    `AskUserQuestion`, Ja/Nein/Teilweise) — kein automatischer Contentcheck,
    da 4-MAT nicht aus dem reinen Folientext ableitbar ist.
 
+   Wenn du selbst erkennst dass kein 4-MAT vorliegt, empfehle nützliche Ergänzungen.
+
 6. **Kurzes Fazit.** Am Ende in 2–3 Sätzen zusammenfassen: welche Folien als
    im Scope bestätigt wurden (mit Links), und das Ergebnis der
    4-MAT-Rückfrage. Keine Änderungen an den Slides selbst vornehmen, sofern
    nicht explizit verlangt.
+
+7. **Umsetzung** Anspassen bestehende und/oder Erstellen neuer Slides
+
+- Neue Slides sollen immer auf English sein.
+- Erstelle dazu im Didaktischen Konzept jeweils Slides die folgende Fragen beantworten:
+  - Titel des Kapitels/Themas (Layout: Abschnittüberschrift)
+  - Little What (Kurze Erklärung, Ein Satz der das Zusammen fasst. Layout: Little What)
+  - Why (Warum brauchen wir dieses Feature. Layout: Why 1)
+  - How (Wie nutzen wir es)
+  - What (Beispiele wir wir es nutzen)
+  - Task (Titel der Aufgabe wie im GitHub Issue. Layout: Task)
+  - What if? (Edgecased die ggf. behandelt werden)
+
+Wenn du Aufzählungen nutzt, schau das du nicht mehr als 4 Punkte nutzt und jeder Punkt maximal 70 Zeichen hat. Sonst passt es nicht auf die Slide.
+
+Achte bei Code-Beispielen darauf, dass diese mit dem in den Code-Slides vorhandenem Syntax-Highlighting ausgezeichnet sind.
+
+Die Titel der Slides sollen kurz und einzeilig sein.
 
 ## Hinweise
 
