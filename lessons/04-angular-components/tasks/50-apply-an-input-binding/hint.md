@@ -3,11 +3,11 @@
 ```ts
 // app.ts
 export class App {
-  book = {
+  book = signal({
     title: 'How to win friends',
     author: 'Dale Carnegie',
     abstract: 'In this book ...'
-  };
+  });
 }
 ```
 
