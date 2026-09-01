@@ -8,3 +8,6 @@ CLAUDE.local.md
 .cursor/
 .aider*
 .mcp.local.json
+
+# Node-Tooling (Husky + commitlint)
+node_modules/
