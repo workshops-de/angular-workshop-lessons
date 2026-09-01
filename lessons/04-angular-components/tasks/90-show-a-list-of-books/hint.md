@@ -2,7 +2,7 @@
 
 ```ts
 // app.ts
-books: Book[] = [
+books = signal<Book[]>([
   {
     title: 'How to win friends',
     author: 'Dale Carnegie',
@@ -18,14 +18,14 @@ books: Book[] = [
     title: 'Start with WHY',
     abstract: "START WITH WHY shows that the leaders who've ..."
   }
-];
+]);
 ```
 
 ## Rendering the list with @for
 
 ```html
 <!-- app.html -->
-@for(book of books; track book.title){
+@for(book of books(); track book.title){
   <app-book-card ... >
 }
 ```
