@@ -4,7 +4,7 @@
 
 ```ts
 // app.ts
-book: Book = { /* ... */ };
+book = signal<Book>({ /* ... */ });
 
 // book-card.ts
 readonly content = input.required<Book>();
