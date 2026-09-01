@@ -1,2 +1,0 @@
-- **Return an Observable** Open _books-client.ts_, change the return type of `getAll` to `Observable<Book[]>` instead of `Book[]`, and make use of the creation operator `of`.
-- **Subscribe to it** Use the Observable in _books-page.ts_ and set the `books` signal in `subscribe`. Make sure that the books are still rendered.
