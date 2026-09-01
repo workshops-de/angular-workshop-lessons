@@ -31,12 +31,21 @@ lokalen Hooks umgeht (`git commit --no-verify`) oder `npm install` nicht ausgef�
 
 ## Auswirkung auf Releases
 
+Bei jedem Push/Merge auf `main` läuft `.github/workflows/release.yml` mit
+[semantic-release](https://semantic-release.gitbook.io/). Es liest die Conventional Commits seit dem letzten
+Tag, berechnet die nächste Version, aktualisiert [CHANGELOG.md](../CHANGELOG.md), setzt einen Git-Tag
+(`vX.Y.Z`) und legt ein GitHub Release an. Andere Trainer werden über die Releases-Seite (Watch) informiert.
+Die Historie startet bei der Baseline **`v2.0.0`**.
+
 | Commit | Release |
 | --- | --- |
-| `fix: …` | Patch (0.0.**x**) |
-| `feat: …` | Minor (0.**x**.0) |
+| `fix: …` | Patch (2.0.**x**) |
+| `feat: …` | Minor (2.**x**.0) |
 | `feat!: …` oder Footer `BREAKING CHANGE:` | Major (**x**.0.0) |
 | `docs:`, `chore:`, `ci:`, `test:`, `refactor:`, `style:` | kein Release |
+
+Der Release-Commit von semantic-release (`chore(release): … [skip ci]`) triggert dank `[skip ci]` keinen
+weiteren Lauf.
 
 ## Beispiele
 

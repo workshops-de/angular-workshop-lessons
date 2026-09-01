@@ -4,7 +4,12 @@
   "private": true,
   "type": "module",
   "description": "Tooling für das Angular-Workshop-Lessons-Repo (Commit-Guard via Husky + commitlint).",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/workshops-de/angular-workshop-slides.git"
+  },
   "scripts": {
+    "release": "semantic-release",
     "prepare": "husky",
     "commitlint": "commitlint --edit"
   },
@@ -15,6 +20,9 @@
     "@commitlint/cli": "^21.2.2",
     "@commitlint/config-conventional": "^21.2.2",
     "@commitlint/types": "^21.2.0",
-    "husky": "^9.1.7"
+    "@semantic-release/changelog": "^7.0.0",
+    "@semantic-release/git": "^11.0.1",
+    "husky": "^9.1.7",
+    "semantic-release": "^25.0.9"
   }
 }
