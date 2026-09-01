@@ -24,7 +24,7 @@ import { computed, signal } from '@angular/core';
 booksComputed = computed(() => {
   const searchTerm = this.searchTerm().toLowerCase();
 
-  return this.books.filter(book =>
+  return this.books().filter(book =>
     book.title.toLowerCase().includes(searchTerm)
   );
 });
