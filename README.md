@@ -43,9 +43,11 @@ Details und Konventionen zum Anlegen: [docs/lessons.md](./docs/lessons.md) bzw. 
 4. Nach dem Merge erzeugt **semantic-release** automatisch die neue Version, aktualisiert
    [CHANGELOG.md](./CHANGELOG.md) und legt ein GitHub Release an. So sehen andere Trainer:innen auf einen
    Blick, was sich an Aufgaben und Beschreibungen geändert hat (Repo „Watch" → Benachrichtigung).
-5. **Wichtig:** Die Änderungen sind damit noch nicht im Kurs sichtbar. Im Classroom von workshops.de müssen
-   die Lessons per Button-Klick („Import" / „Aktualisieren") neu importiert werden, damit der neue Stand
-   übernommen wird.
+5. **Wichtig:** Die Änderungen sind damit noch nicht im Kurs sichtbar. Im
+   [Classroom von workshops.de](https://workshops.de/classroom) unter **Manage Lessons** die betroffene
+   Lesson öffnen und **„Sync all tasks from GitHub"** klicken, damit der neue Stand übernommen wird.
+
+   ![Manage Lessons → „Sync all tasks from GitHub" im workshops.de-Classroom](docs/images/classroom.png)
 
 ## Folien
 
