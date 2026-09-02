@@ -11,9 +11,9 @@ Die Git-Hooks werden von [Husky](https://typicode.github.io/husky/) verwaltet un
 npm install
 ```
 
-Danach prüft der `commit-msg`-Hook jede Commit-Message lokal. Ein zusätzlicher GitHub-Actions-Workflow
-(`.github/workflows/commitlint.yml`) prüft alle Commits eines Pull Requests noch einmal – auch wenn jemand die
-lokalen Hooks umgeht (`git commit --no-verify`) oder `npm install` nicht ausgeführt hat.
+Danach prüft der `commit-msg`-Hook jede Commit-Message lokal. Der GitHub-Actions-Workflow
+(`.github/workflows/ci.yml`, Job `commitlint`) prüft alle Commits eines Pull Requests noch einmal – auch wenn
+jemand die lokalen Hooks umgeht (`git commit --no-verify`) oder `npm install` nicht ausgeführt hat.
 
 ## Format
 
@@ -31,8 +31,8 @@ lokalen Hooks umgeht (`git commit --no-verify`) oder `npm install` nicht ausgef�
 
 ## Auswirkung auf Releases
 
-Bei jedem Push/Merge auf `main` läuft `.github/workflows/release.yml` mit
-[semantic-release](https://semantic-release.gitbook.io/). Es liest die Conventional Commits seit dem letzten
+Bei jedem Push/Merge auf `main` läuft `.github/workflows/ci.yml` (Job `release`, nach bestandenem
+`commitlint`) mit [semantic-release](https://semantic-release.gitbook.io/). Es liest die Conventional Commits seit dem letzten
 Tag, berechnet die nächste Version, aktualisiert [CHANGELOG.md](../CHANGELOG.md), setzt einen Git-Tag
 (`vX.Y.Z`) und legt ein GitHub Release an. Andere Trainer werden über die Releases-Seite (Watch) informiert.
 Die Historie startet bei der Baseline **`v2.0.0`**.
