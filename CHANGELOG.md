@@ -2,6 +2,13 @@
 
 Alle nennenswerten Änderungen an den Workshop-Lessons. Automatisch aus den Conventional Commits erzeugt (semantic-release).
 
+# [1.1.0](https://github.com/workshops-de/angular-workshop-slides/compare/v1.0.0...v1.1.0) (2026-09-02)
+
+
+### Features
+
+* add guide for trainers ([6617a01](https://github.com/workshops-de/angular-workshop-slides/commit/6617a01febb056277e98605bff238f395a264626))
+
 # 1.0.0 (2026-09-02)
 
 
