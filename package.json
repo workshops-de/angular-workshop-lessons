@@ -13,9 +13,6 @@
     "prepare": "husky",
     "commitlint": "commitlint --edit"
   },
-  "engines": {
-    "node": ">=20"
-  },
   "devDependencies": {
     "@commitlint/cli": "^21.2.2",
     "@commitlint/config-conventional": "^21.2.2",
