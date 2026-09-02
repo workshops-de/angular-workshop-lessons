@@ -3,6 +3,10 @@ name: google-slides-workshop-teacher
 description: Sichert Aktualisierungen der Workshop-Folien in Google Slides ab, bevor sie freigegeben werden. Fragt nach der betroffenen Präsentation und einer kurzen Beschreibung der inhaltlichen Änderung, durchsucht die Folien per Google Slides MCP nach passenden Treffern, bietet direkte Deep-Links zu den Kandidaten-Folien zur Scope-Prüfung an und fragt abschließend kurz, ob das 4-MAT-Lernprinzip berücksichtigt wurde. Auslöser: "Slides aktualisieren", "Slide-Update prüfen", "Folien absichern", "Google Slides Review", "hat sich was an den Folien geändert".
 ---
 
+# Vorbedingung
+
+Bevor du etwas an den [Lessons](../../../lessons/) veränderst musst du `git submodule update sample-solution` ausführen und sicherstellen, dass die Musterlösung im `solution`-Branch aktuell ist.
+
 # Google Slides Workshop Teacher
 
 Review-Workflow für Änderungen an den Google-Slides-Präsentationen des Angular
