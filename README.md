@@ -18,6 +18,12 @@ git submodule update --init     # holt die Beispiellösungen nach ./sample-solut
 
 Node-Version: siehe [.node-version](./.node-version) (via `fnm`/`nvm`/`nodenv` automatisch).
 
+**Google Slides MCP-Server** (nur nötig, wenn du Folien bearbeitest): Der Slides-Workflow greift
+ausschließlich über den Google Slides MCP-Server auf die Präsentationen zu. Diesen einmalig lokal
+einrichten – Plugin installieren und Google-OAuth-Credentials hinterlegen. Ohne diese Konfiguration
+funktioniert der Slides-Workflow nicht. Setup-Details im GitHub-Projekt:
+[matteoantoci/google-slides-mcp](https://github.com/matteoantoci/google-slides-mcp).
+
 ## Aufbau
 
 ```
@@ -54,7 +60,8 @@ Details und Konventionen zum Anlegen: [docs/lessons.md](./docs/lessons.md) bzw. 
 Slides liegen in Google Slides und sind über mehrere Präsentationen verteilt (`google_slide_id` in der
 jeweiligen `lesson.yml`). Vor Änderungen die Skill-Anleitung unter
 [.claude/skills/google-slides-workshop-teacher](./.claude/skills/google-slides-workshop-teacher/SKILL.md)
-lesen.
+lesen. Der Skill greift ausschließlich über den Google Slides MCP-Server zu – die einmalige Einrichtung
+steht oben unter [Einrichtung (einmalig)](#einrichtung-einmalig).
 
 ## Beispiellösungen
 
