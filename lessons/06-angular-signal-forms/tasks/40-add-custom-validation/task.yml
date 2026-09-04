@@ -2,6 +2,6 @@ title: Add custom validation
 position: 40
 category: General
 preparation: false
-estimated_time_in_minutes: 15
+estimated_time_in_minutes: 10
 always_unlocked: false
 git_tag_completed: solve--write-custom-validator
