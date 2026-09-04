@@ -1,6 +1,6 @@
-- Create a folder `validators` and add a file `author.ts`.
+- Create a folder `books/validators` and add a file `author.ts`.
 - Create a function `validAuthorName(schemaPath: SchemaPath<string>): void` that calls `validate()` from `@angular/forms/signals`, passing in the `schemaPath` and a callback `field => { ... }`.
 - Inside the callback, read the current value with `field.value()` and check if it contains any digits (Hint: you can use a Regex for this: `/[0-9]+/.test(value)`).
 - If the value contains any digits return a validation error object: `{ kind: 'invalidAuthor', message: 'Name must not contain digits' }`, otherwise return `null`.
 - Call your `validAuthorName()`-Function inside the schema function of `BookNewPage`, passing in `schemaPath.author`.
-- Add another `<small>`-Tag beneath the `<input>`-Tag for the Author. This Tag should be displayed as soon as `form.author().errors()` contains an error with `kind === 'invalidAuthor'`.
+- We don't need a specific handling of the error message in the template, because we are using already a `for`-loop.
